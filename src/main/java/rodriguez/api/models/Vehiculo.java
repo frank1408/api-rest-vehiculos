@@ -42,4 +42,7 @@ public class Vehiculo {
     @Column(name = "placa", nullable = false )
     private String placa;
     
+    @Column(name = "ubicacion_actual", nullable = false )
+    private String ubicacion_actual;
+    
 } // public class Usuario

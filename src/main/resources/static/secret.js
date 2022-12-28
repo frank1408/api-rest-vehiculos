@@ -7,7 +7,7 @@ frank14082013@gmail.com
 const URL_API = "http://localhost:8000";
 const XTABLA = document.querySelector("#tusuario tbody");
 
-async function crearUsuario() {
+async function crearVehiculo() {
 
 	let unombre     = document.getElementById("unombre");
 	let uapellido   = document.getElementById("uapellido");
@@ -71,7 +71,7 @@ async function cargarVehiculo() {
 	fetch( urlApi, objetoInfo )
 	    .then( (response) => response.json() )
 	    .then( (response2) => {
-	        let uusuario = response2;
+	        let vvehiculo = response2;
 
 	            let filaUsuario = `
                     <tr>
@@ -81,16 +81,34 @@ async function cargarVehiculo() {
                     </td>
 
                     <td>
-                    ${vvehiculo.nombre} ${vvehiculo.apellido}
+                    ${vvehiculo.capacidad_en_metros_cubicos}
                     </td>
 
                     <td>
-                    ${vvehiculo.correo}
+                    ${vvehiculo.consumo_de_combustibe_x_km}
                     </td>
 
                     <td>
-                    ${vvehiculo.telefono}
+                    ${vvehiculo.distancia_x_recorrer_para_estar_disponible}
                     </td>
+
+
+                    <td>
+                    ${vvehiculo.costo_depreciacion_x_km_recorrido}
+                    </td>
+
+                    <td>
+                    ${vvehiculo.km_recorridos}
+                    </td>
+
+                    <td>
+                    ${vvehiculo.placa}
+                    </td>
+
+                    <td>
+                    ${vvehiculo.ubicacion_actual}
+                    </td>
+
 
                     <td>
                     <!--
@@ -111,8 +129,8 @@ function limpiar(){
 	XTABLA.innerHTML = "";
 }
 
-async function cargarUsuarios() {
-	const urlApi = URL_API + "/api/usuarios";
+async function cargarVehiculos() {
+	const urlApi = URL_API + "/api/vehiculos";
 	const objetoInfo = {
     mode: "cors",/* no-cors same-origin */
 	method: "GET",
@@ -131,49 +149,64 @@ async function cargarUsuarios() {
 	const res = await ans.json();
     limpiar();
 
-	for( let uusuario of res ) {
+	for( let vvehiculo of res ) {
 
 	let filaUsuario = `
 	<tr>
+									  <td>
+                    ${vvehiculo.id}
+                    </td>
 
-	<td>
-	${uusuario.id}
-	</td>
+                    <td>
+                    ${vvehiculo.capacidad_en_metros_cubicos}
+                    </td>
 
-	<td>
-	${uusuario.nombre} ${uusuario.apellido}
-	</td>
+                    <td>
+                    ${vvehiculo.consumo_de_combustibe_x_km}
+                    </td>
 
-	<td>
-	${uusuario.correo}
-	</td>
+                    <td>
+                    ${vvehiculo.distancia_x_recorrer_para_estar_disponible}
+                    </td>
 
-	<td>
-	${uusuario.telefono}
-	</td>
 
+                    <td>
+                    ${vvehiculo.costo_depreciacion_x_km_recorrido}
+                    </td>
+
+                    <td>
+                    ${vvehiculo.km_recorridos}
+                    </td>
+
+                    <td>
+                    ${vvehiculo.placa}
+                    </td>
+
+                    <td>
+                    ${vvehiculo.ubicacion_actual}
+                    </td>
 	<td>
-	<a href="#" onclick="deleteUsuario( ${uusuario.id} )">DELETE</a>
+	<a href="#" onclick="deleteVehiculo( ${vvehiculo.id} )">DELETE</a>
 	</td>
 	</tr>
 	`;
-	XTABLA.innerHTML += filaUsuario;
+	XTABLA.innerHTML += filaVehiculo;
 	} // for
 
 	}catch(err){
 		alert("acceso denegado, debes iniciar sesion y tener permiso !");
 	}
 
-} // function cargarUsuarios
+} // cargarVehiculos
 
-async function deleteUsuario( id ) {
+async function deleteVehiculo( id ) {
 
 if(
 confirm(
-"Eliminar usuario con id: " + id
+"Eliminar vehiculo con id: " + id
 )
 ){
-const urlApi = URL_API + "/api/usuarios/" + id;
+const urlApi = URL_API + "/api/vehiculos/" + id;
 
 const objetoInfo = {
 mode: 'cors',/* no-cors same-origin*/
@@ -193,6 +226,6 @@ const res = ans.json();
 location.reload();
 }catch(err){ alert("err: " + err); }
 
-} // if confirm eliminar usuario con ID
+} // if confirm eliminar vehiculo con ID
 
-} // function deleteUsuario
+} // deleteVehiculo

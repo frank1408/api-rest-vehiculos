@@ -2,18 +2,21 @@
 
 <jsp:include page="arriba.jsp"></jsp:include>
 
-<button onclick="cargarUsuarios()">
+<button onclick="cargarVehiculos()">
 Mostrar Usuarios
 </button>
 
 <table id="tusuario">
 <thead>
 <tr>
-<th>Id</th>
-<th>Nombre y apellido</th>
-<th>Correo</th>
-<th>Telefono</th>
-<th>Opciones</th>
+<th>id</th>
+<th>placa</th>
+<th>capacidad_en_metros_cubicos</th>
+<th>consumo_de_combustibe_x_km</th>
+<th>distancia_x_recorrer_para_estar_disponible</th>
+<th>costo_depreciacion_x_km_recorrido</th>
+<th>km_recorridos</th>
+<th>ubicacion_actual</th>
 </tr>
 </thead>
 <tbody>

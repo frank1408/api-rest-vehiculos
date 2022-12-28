@@ -6,6 +6,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <jsp:include page="arriba.jsp"></jsp:include>
 
-<h1>Hello Java and JSP !</h1>
+<h1> Bienvenido !</h1>
 
 <jsp:include page="abajo.jsp"></jsp:include>
